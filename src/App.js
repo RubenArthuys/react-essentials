@@ -1,6 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import TodoList from './TodoList'
 import uuidv4 from 'uuid/v4'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css'
 
 
 function App() {
@@ -40,6 +42,7 @@ function App() {
       return [...prevTodos, { id: uuidv4(), name: name, complete: false}]
     })    
     todoNameRef.current.value = null
+    
   }
 
   function handleClearTodo() {
@@ -50,7 +53,7 @@ function App() {
   return (
     <>
     <TodoList todoProp={todoVariable} toggleTodo={toggleTodo} />
-    <input ref={todoNameRef} type="text" />
+    <input ref={todoNameRef} type="text" /><br/><br/>
     <button onClick={handleAddTodo} >Add Todo</button>
     <button onClick={handleClearTodo} >Clear Completed</button>
     <div>{todoVariable.filter(todoChangeNew => !todoChangeNew.complete).length} left to do</div>
